@@ -114,19 +114,15 @@ public class JCVKinect implements DepthHandler, VideoHandler {
 		IplImage image = IplImage.create(format.getWidth(), format.getHeight(), IPL_DEPTH_8U, 1);
 		ByteBuffer imgBuffer = image.getByteBuffer();
 		buffer.rewind();
-		char min = (char)66000, max = 0;
 		for( int y = 0; y < format.getHeight(); y++ ) {
 			for( int x = 0; x < format.getWidth(); x++) {
 				int firstByte = (0x000000FF & buffer.get());
 				int secondByte = (0x000000FF & buffer.get());
 				char raw = (char) (firstByte | secondByte << 8);
-				if(raw > max) max = raw; if(raw < min)min = raw;
 				int val = (int) ( ( (double)raw / 1024.00 ) * 255.00 );
-				if(x == format.getWidth()/2 && y == format.getHeight()/2) System.out.println(firstByte + " " + secondByte);
 				imgBuffer.put(y*image.widthStep()+image.nChannels()*x, (byte)val );
 			}
 		}
-		System.out.print((int)min); System.out.print("\t"); System.out.println((int)max);
 		if(_delegate != null) _delegate.onRecievedDepthFrame(image, this);
 	}
 
