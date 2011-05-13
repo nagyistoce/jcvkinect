@@ -1,5 +1,5 @@
 #summary JCVKinect is a collection of Java classes for getting OpenCV compatible data from the Kinect
-#labels Phase-Requirements
+#labels Phase-Requirements,Featured
 
 = Introduction =
 
