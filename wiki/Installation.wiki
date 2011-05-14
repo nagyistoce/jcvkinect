@@ -34,6 +34,10 @@ kinect.initDevice(0);
 }}}
   # Call startDepth(); or startRGB(); to begin the depth/video feeds respectively.
   # When you are done with the Kinect data feed, call stopDepth(); or stopRGB(); You must call the stop command that is appropriate for the start command you called earlier.
+  # Finally, call close(); in order to make sure the Kinect device is properly shut down and available for the next program that wishes to use it.
+{{{
+kinect.close();
+}}}
 
 The delegate class *must* implement _JCVKinectDelegate_ and define two methods
   * onRecievedDepthFrame(IplImage image, JCVKinect device);
