@@ -8,11 +8,22 @@ JCVKinect is supposed to be an easy to set up and to use class set. There are on
 
 = Setup =
 
-First make sure you have correctly installed OpenKinect's libfreenect library and Java JNA wrapper and the latest version of OpenCV (2.2 @ time of writing).
+==Adding OpenKinect and JavaCV to an eclipse project==
+In order to use JCVKinect, you must have the OpenKinect Java [http://openkinect.org/wiki/Java_JNA_Wrapper wrapper] and [http://code.google.com/p/javacv/ JavaCV] in your project. Install these two libraries per the instructions on their homepages.
+The following instructions are for the Eclipse IDE, though other IDEs should be similar.
+  # Open the project you want to add them to and select Project->Properties from the menu bar.
+  # Select *Java Build Path* from the left list. Here, you can add the necessary JAR files. Select *Add external JARs...* and import the two JARs for libfreenect and the eight JARS for JavaCV.
+  # Select *OK* to close the properties window.
+  # Open a Finder window, find the folder in which you downloaded and built libfreenect, and open the /build/lib/ folders.
+  # Right click *libfreenect.dylib* and copy it. Go back to Eclipse, right click on you project's main folder in the Package Explorer, and paste the file into that folder.
+
+You are now done adding the JavaCV and OpenKinect libraries to your Eclipse project.
+
+==Adding JCVKinect to your Project==
 With those libraries installed, here's how to setup JCVKinect
-  # Download JCVKinect.java and JCVKinectDelegate.java from the source tree.
-  # Add those two Java files to your project's source folder.
-  # Import JCVKinect and JCVKinectDelegate to your source code
+  # Download [http://code.google.com/p/jcvkinect/downloads/detail?name=JCVKinect.jar&can=2&q=#makechanges JCVKinect.jar]. Save it somewhere where it will be safe to live for a while.
+  # Using the same technique as in the previous section, add JCVKinect.jar to your projects Build Path.
+  # Import JCVKinect and JCVKinectDelegate to your source code using the following code.
 {{{
 import com.marist.cs2011.JCVKinect;
 import com.marist.cs2011.JCVKinectDelegate;
